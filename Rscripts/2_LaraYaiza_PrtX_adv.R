@@ -1,18 +1,19 @@
-#### Omics BIO253
-#### Matrix Proteomix STX_protein expression
-#############################################ABSTAND VERGRÖSSSERN ZUR STX-SPALTE
-
+#### Omics BIO253 - Proteomic STX
+#### Matrix MIT EINZELNEN PFEILEN (diverser Länge) + STX-AVERAGE
+#############################################
+###TODO - POSSIBLE IMPROVEMENTS:
+######add a black vertical line separating the STX-Average values (or even more spacing)
+######add/improve axes + add evtl. a titel
 library(tidyverse)
 library(readxl)
 library(writexl)
 
 #### Daten einlesen
-pfad <- "C:/Users/rubid/Documents/1_Prio_Biomedizin/AAA/00_AAA_BIO253/Bio253_SA6850_Research_in_Omics_HS2025-main"
-datei <- "LaraYaiza_tabel_STX.xlsx"
-full_path <- file.path(pfad, datei)
+setwd("../Bio253_SA6850_Research_in_Omics_HS2025")
+file <- "resources/LaraYaiza_tabel_STX.xlsx"          # relative folder path!
 
 #### richtige Tabelle einlesen
-df <- read_excel(full_path,sheet = "Tabelle2", skip=3)
+df <- read_excel(file, sheet = "Tabelle2", skip=3)
 
 #### Gen-Spalten definieren
 genes <- c("crtM", "crtN", "crtP", "crtQ", "crtO")
@@ -170,8 +171,6 @@ ggplot(df_plot, aes(Gene_f, Sample_f)) +
     )
 
 ##################################################################
-
-
 #########################################################
 ### ADDITION — Clean STX column (clone-level) + spacing
 ##########################################################
