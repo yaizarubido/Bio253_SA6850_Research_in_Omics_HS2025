@@ -1,5 +1,5 @@
-#### Omics BIO253
-#### Matrix Proteomix STX_Protein expression
+#### Omics BIO253 - Proteomic STX
+#### Matrix with numbers and MULTIPLE ARROW Matrix
 ###
 
 library(tidyverse)
@@ -7,14 +7,15 @@ library(readxl)
 library(writexl)
 
 #### Daten einlesen
-path <- "../resources"                 # relative folder path!
-file <- "LaraYaiza_tabel_STX.xlsx"    # Dateiname Resource
-full_path <- file.path(path, file)
+setwd("../Bio253_SA6850_Research_in_Omics_HS2025")
+#path <- "..Bio253_SA6850_Reseach_in_Omics_HS2025/resources"        # relative folder path!
+file <- "resources/LaraYaiza_tabel_STX.xlsx"                        # Dateiname Resource
+# full_path <- file.path(path, file)
+# print(full_path)
+# print(file.exists(full_path))
 
-print(full_path)
-print(file.exists(full_path))
 #### richtige Tabelle einlesen
-df <- read_excel(full_path,sheet = "Tabelle2",skip=3)
+df <- read_excel(file,sheet = "Tabelle2",skip=3)
 
 #### Gen-Spalten definieren
 genes <- c("crtM", "crtN", "crtP", "crtQ", "crtO")
@@ -53,10 +54,10 @@ arrow_matrix <- matrix_ready %>%
 
 arrow_matrix
 
-###############################################################
-### Erweiterung: Pfeil-Matrix mit sortierter Sample-Reihenfolge
-### (oben TSB, unten PASN) — ohne den bisherigen Code zu ändern
-###############################################################
+###################################################################
+### Erweiterung: Pfeil-Matrix mit sortierter Sample-Reihenfolge ###
+### (oben TSB, unten PASN)                                      ###
+###################################################################
 
 # 1) Condition-Information extrahieren
 sample_info <- df %>%
